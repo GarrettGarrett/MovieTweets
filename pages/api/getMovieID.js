@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 export default async (req, res) => {
 
     if (req.method === 'POST') {
+        console.log("🚀 ~ file: getMovieID.js ~ line 9 ~ req.body", req.body)
         let userQuery = req.body.userQuery
 
         var myHeaders = new Headers();
