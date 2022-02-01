@@ -5,7 +5,7 @@ export default async (req, res) => {
         let tweetID = req.body.tweet.id
         console.log("🚀 ~ file: getTweetEmbed.js ~ line 7 ~ req.body.actor", req.body.actor)
 
-        let actor = req.body.actor.replaceAll(" ", "")
+        let actor = req.body.actor.replace(" ", "")
         let tweetURL = `https://twitter.com/${actor}/status/${tweetID}`
        
 
