@@ -5,6 +5,7 @@ export default async (req, res) => {
 
     if (req.method === 'POST') {
         let userQuery = req.body.userQuery
+        console.log("🚀 ~ file: getAllMoviesIDByQuery.js ~ line 8 ~ userQuery", userQuery)
 
         var myHeaders = new Headers();
         myHeaders.append("Connection", "keep-alive");
