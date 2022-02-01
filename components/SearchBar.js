@@ -34,7 +34,7 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
           <input
             type="search"
             className="relative pl-10 bg-black text-gray-400 block w-full text-md  rounded-md"
-            placeholder="Search..."
+            placeholder="Search Any Movie..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
