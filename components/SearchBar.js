@@ -33,7 +33,7 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
           </div>
           <input
             type="search"
-            className="relative pl-10 bg-black text-gray-400 block w-full text-sm md:text-md rounded-md"
+            className="relative pl-10 bg-black text-gray-400 block w-full text-md  rounded-md"
             placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
