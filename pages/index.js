@@ -79,7 +79,7 @@ export default function Home() {
     async function getTweetEmbed(tweet, actor){ //ID of tweet, link to twitter profile
       const tweetEmbed = await fetch ("/api/getTweetEmbed", {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({tweet: tweet, actor: actor}) 
       })
       let tweetEmbed_json = await tweetEmbed.json()
@@ -91,7 +91,7 @@ export default function Home() {
     async function getTweets(twitterID){
       const tweetsArray = await fetch ("/api/getTweets", {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({twitterID: twitterID}) 
       })
       let tweetsArray_json = await tweetsArray.json()
@@ -102,7 +102,7 @@ export default function Home() {
   async function getTwitterIDByActor(actor){
     const twitterID = await fetch ("/api/getTwitterIDByActor", {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      // headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({actor: actor}) 
     })
     let twitterID_json = await twitterID.json()
@@ -125,7 +125,7 @@ export default function Home() {
   async function getSocials(userID){
     const socialsArray = await fetch ("/api/getSocials", {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      // headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({userID: userID}) 
     })
     let socialsArray_json = await socialsArray.json()
@@ -137,7 +137,7 @@ export default function Home() {
   async function getTopCast(movieID) {
     const topCastArray = await fetch ("/api/getTopCasts", {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      // headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({movieID: movieID}) 
     })
     let topCastArray_json = await topCastArray.json()
@@ -148,7 +148,7 @@ export default function Home() {
   async function getMovieID(userQuery){
     const movieID = await fetch ("/api/getMovieID", {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      // headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({userQuery: userQuery}) 
     })
     let movieID_json = await movieID.json()
