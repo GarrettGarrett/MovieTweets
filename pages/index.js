@@ -29,7 +29,7 @@ export default function Home() {
 
     if (query?.length > 1) {
       setEmbedArray([])
-      const movieID = await getMovieID(query)
+      const movieID = await getMovieID(query.toLowerCase())
       console.log("🚀 ~ file: index.js ~ line 15 ~ everything ~ movieID", movieID)
       
       
