@@ -3,8 +3,7 @@ export default async (req, res) => {
 
     if (req.method === 'POST') {
         let tweetID = req.body.tweet.id
-        let actor = req.body.actor
-        actor = actor.replaceAll(" ", "")
+        let actor = req.body.actor.replaceAll(" ", "")
         let tweetURL = `https://twitter.com/${actor}/status/${tweetID}`
        
 
