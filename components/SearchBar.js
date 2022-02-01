@@ -36,7 +36,7 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
             className="relative pl-10 bg-black text-gray-400 block w-full text-md  rounded-md"
             placeholder="Search Any Movie..."
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value.toLowerCase())}
           />
         </div>
 
