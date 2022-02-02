@@ -1,27 +1,43 @@
-# Next.js + Tailwind CSS Example
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+<h1 align="center">
+  <br>
+  <a href="https://movie-tweets.vercel.app/"><img src="public/static/images/logo.png" width="200" alt="Movie Cast Tweets" ></a>
+  <br>
+  Movie Cast Tweets
+  <br>
+</h1>
 
-## Preview
+<h4 align="center">A Web Application to Discover the Twitter Activity for the Casts of your Favorite Movies & TV Shoes.</h4>
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-## Deploy your own
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#APIs-used">How To Use</a> •
+  <a href="#Built-with">Download</a> •
+</p>
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+![screenshot](public/static/images/movietweets.gif)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Key Features
 
-## How to use
+* Search Any Movie or TV Show found on IMDb
+* Twitter Posts for the Top 3 Cast Members Will Appear in a Single Twitter Feed
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+## APIs Used
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+* OMDb API
+* Twitter API
+
+
+## Built With
+![screenshot](public/static/images/techused.png)
+
+* JavaScript
+* Next.js
+* Tailwind CSS
+* Vercel
+* MongoDB
+
+
