@@ -14,7 +14,7 @@
 <p align="center">
   <a href="#key-features">Key Features</a> •
   <a href="#APIs-used">APIs Used</a> •
-  <a href="#Built-with">Built With</a> •
+  <a href="#Built-with">Built With</a> 
 </p>
 
 ![screenshot](public/static/images/movietweets.gif)
