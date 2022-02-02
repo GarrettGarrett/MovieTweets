@@ -4,13 +4,23 @@ import { SearchIcon } from '@heroicons/react/outline'
 
 export default function SearchBar({query, setQuery, current, setCurrent}) {
   const [results, setResults] = useState()
+  const [open, setOpen] = useState(false)
   
 
   useEffect(() => { //Search once user stops typing for 1000 ms
-    const timeoutId = setTimeout(() =>  getAllMoviesIDByQuery(query), 300);
+    const timeoutId = setTimeout(() =>  getAllMoviesIDByQuery(query), 1000);
+    if (query?.length > 2){
+      setOpen(true)
+    }
     return () => clearTimeout(timeoutId);
+
   }, [query]);
 
+  useEffect(() => {
+    console.log("new results received", results)
+    console.log("new results received", query)
+  }, [results]);
+  
 
 
   async function getAllMoviesIDByQuery(userQuery){
@@ -22,6 +32,7 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
     let resultsArray = await movieID.json()
     setResults(resultsArray.movieIDs)
   }
+
 
     
     return (
@@ -43,13 +54,14 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
 
         {
           results?.length > 0 ? 
-          results.map(result => {
+          results?.map(result => {
             return (
               <div 
               onClick={() => {
+                // setOpen(false)
+                setResults('')
                 setCurrent(result.id)
-                setResults()
-                setQuery(result.l)
+                setQuery(result.l.toLowerCase())
               }}
               className='py-2 hover:bg-gray-600 flex hover:cursor-pointer items-center rounded-md'>
                 <img className='w-16 p-2' src={result?.i?.imageUrl}/>
