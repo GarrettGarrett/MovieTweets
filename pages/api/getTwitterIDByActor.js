@@ -1,5 +1,14 @@
+import { connectToDatabase } from '../../utils/dbConnect'
+
+
+ 
 
 export default async (req, res) => {
+    const { db } = await connectToDatabase();
+    const collection = 'actortweets'
+    const mongo_response = await db
+                    .collection(collection).find({_id: 1}).toArray()
+
 
     if (req.method === 'POST') {
         let actor = req.body.actor
@@ -12,7 +21,7 @@ export default async (req, res) => {
         myHeaders.append("sec-ch-ua-mobile", "?0");
         myHeaders.append("authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA");
         myHeaders.append("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36");
-        myHeaders.append("x-guest-token", "1488684014323994625");
+        myHeaders.append("x-guest-token", mongo_response[0].cookie);
         myHeaders.append("x-twitter-active-user", "yes");
         myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
         myHeaders.append("accept", "*/*");

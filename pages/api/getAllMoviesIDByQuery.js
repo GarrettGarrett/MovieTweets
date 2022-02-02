@@ -30,7 +30,7 @@ export default async (req, res) => {
       
         
 
-        const response = await fetch(`https://v2.sg.media-imdb.com/suggestion/${userQuery.charAt(0)}/${userQuery}.json`, requestOptions)
+        const response = await fetch(`https://v2.sg.media-imdb.com/suggestion/${userQuery.charAt(0).toLowerCase()}/${userQuery}.json`, requestOptions)
         const response_json = await response.json()
         console.log("🚀 ~ file: getAllMoviesIDByQuery.js ~ line 34 ~ response_json", response_json)
         let movieIDs = response_json.d

@@ -163,7 +163,7 @@ export default function Home() {
       <div className="h-screen max-w-7xl mx-auto px-7 sm:px-20 lg:px-8">
           <div className=" max-w-3xl mx-auto ">
             <h1 className="pt-20 !text-transparent text-4xl sm:text-7xl bg-clip-text bg-cover bg-center bg-gradient-to-r from-purple-400 via-sky-50 to-pink-300 p-3 text-black dark:text-white font-extrabold !text-opacity-100 text-center">What's the Cast of Your Favorite Movie Tweeting About?</h1>
-            <h2 class={`${status.length < 3 ? 'invisible' : '' } text-slate-400 text-lg font-light text-opacity-80 text-center`}>{status}</h2>
+            <h2 className={`${status.length < 3 ? 'invisible' : '' } text-slate-400 text-lg font-light text-opacity-80 text-center`}>{status}</h2>
             
               <SearchBar query={query} setQuery={setQuery} current={current} setCurrent={setCurrent}/>
               
