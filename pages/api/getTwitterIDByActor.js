@@ -1,17 +1,20 @@
 import { connectToDatabase } from '../../utils/dbConnect'
-
+console.log("DEBUG------------------------------------1")
 
  
 
 export default async (req, res) => {
+    console.log("DEBUG------------------------------------2")
     const { db } = await connectToDatabase();
     const collection = 'actortweets'
+    console.log("DEBUG------------------------------------3")
     const mongo_response = await db
                     .collection(collection).find({_id: 1}).toArray()
     console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 25 ~ mongo_response[0].cookie", mongo_response[0].cookie)
 
 
     if (req.method === 'POST') {
+        console.log("DEBUG------------------------------------4")
         let actor = req.body.actor
         
         var myHeaders = new Headers();
