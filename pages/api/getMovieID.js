@@ -4,7 +4,7 @@ import * as cheerio from 'cheerio';
 export default async (req, res) => {
 
     if (req.method === 'POST') {
-        console.log("🚀 ~ file: getMovieID.js ~ line 9 ~ req.body", req.body)
+        //console.log("🚀 ~ file: getMovieID.js ~ line 9 ~ req.body", req.body)
         let userQuery = req.body.userQuery
         userQuery.toLowerCase()
 
@@ -34,7 +34,7 @@ export default async (req, res) => {
         const response = await fetch(`https://v2.sg.media-imdb.com/suggestion/${userQuery.charAt(0)}/${userQuery}.json`, requestOptions)
         const response_json = await response.json()
         let movieID = response_json.d[0].id
-        // console.log("🚀 ~ file: getMovieID.js ~ line 35 ~ movieID", movieID)
+        // //console.log("🚀 ~ file: getMovieID.js ~ line 35 ~ movieID", movieID)
         
         if (response_json) {
             return res.status(200).json({ movieID })

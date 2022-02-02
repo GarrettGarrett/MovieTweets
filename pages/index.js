@@ -9,6 +9,7 @@ export default function Home() {
   const [embedArray, setEmbedArray] = useState([])
   const [query, setQuery] = useState()
   const [current, setCurrent] = useState()
+  const [results, setResults] = useState()
   const [status, setStatus] = useState('na')
   const {theme, setTheme } = useTheme("dark"); 
   
@@ -24,27 +25,29 @@ export default function Home() {
 
 
 
+
   
   async function everything(query){
+    let castWithTwitterOver5kFollowers = []
 
     if (query?.length > 1) {
       setEmbedArray([])
       const movieID = await getMovieID(query.toLowerCase())
-      console.log("🚀 ~ file: index.js ~ line 15 ~ everything ~ movieID", movieID)
+      //console.log("🚀 ~ file: index.js ~ line 15 ~ everything ~ movieID", movieID)
       
       
       const topCastsArray = await getTopCast(movieID)
-      console.log("🚀 ~ file: index.js ~ line 17 ~ everything ~ topCastsArray", topCastsArray)
+      //console.log("🚀 ~ file: index.js ~ line 17 ~ everything ~ topCastsArray", topCastsArray)
       setStatus("Fetching Top Actors...")
       
       asyncForEach(topCastsArray, async (actor) => { 
           let twitterID = await getTwitterIDByActor(actor)
           
           let followersCount = await getFollowerCount(twitterID)
-          console.log("🚀 ~ file: index.js ~ line 44 ~ asyncForEach ~ followersCount", followersCount)
+          //console.log("🚀 ~ file: index.js ~ line 44 ~ asyncForEach ~ followersCount", followersCount)
           if (followersCount > 5000) {
             let tweetsArray = await getTweets(twitterID)
-            console.log("🚀 ~ file: index.js ~ line 29 ~ everything ~ tweetsArray", tweetsArray)
+            //console.log("🚀 ~ file: index.js ~ line 29 ~ everything ~ tweetsArray", tweetsArray)
             setStatus(`Fetching Tweets for ${actor}...`)
   
             asyncForEach(tweetsArray, async (tweet) => { //embed tweets for given array of tweets
@@ -94,7 +97,7 @@ async function getFollowerCount(twitterID){
         body: JSON.stringify({tweet: tweet, actor: actor}) 
       })
       let tweetEmbed_json = await tweetEmbed.json()
-      console.log("🚀 ~ file: index.js ~ line 82 ~ getTweetEmbed ~ tweetEmbed_json", tweetEmbed_json)
+      //console.log("🚀 ~ file: index.js ~ line 82 ~ getTweetEmbed ~ tweetEmbed_json", tweetEmbed_json)
       return tweetEmbed_json.embedSlice
       
   }
@@ -124,7 +127,7 @@ async function getFollowerCount(twitterID){
 
   function filterTwitterSocial(socialsArray){
     let twitter
-    console.log("🚀 ~ file: index.js ~ line 28 ~ filterTwitterSocial ~ socialsArray", typeof socialsArray)
+    //console.log("🚀 ~ file: index.js ~ line 28 ~ filterTwitterSocial ~ socialsArray", typeof socialsArray)
     socialsArray.map(social => {
         if (social.includes('twitter')){
           twitter = social
@@ -168,6 +171,7 @@ async function getFollowerCount(twitterID){
   
 
 
+  
 
   return (
     <>
@@ -176,7 +180,7 @@ async function getFollowerCount(twitterID){
             <h1 className="pt-20 !text-transparent text-4xl sm:text-7xl bg-clip-text bg-cover bg-center bg-gradient-to-r from-purple-400 via-sky-50 to-pink-300 p-3 text-black dark:text-white font-extrabold !text-opacity-100 text-center">What's the Cast of Your Favorite Movie Tweeting About?</h1>
             <h2 className={`${status.length < 3 ? 'invisible' : '' } text-slate-400 text-lg font-light text-opacity-80 text-center`}>{status}</h2>
             
-              <SearchBar query={query} setQuery={setQuery} current={current} setCurrent={setCurrent}/>
+              <SearchBar query={query} setQuery={setQuery} current={current} setCurrent={setCurrent} results={results} setResults={setResults}/>
               
               {
                 embedArray?.length > 0 ? 

@@ -5,7 +5,7 @@ export default async (req, res) => {
 
     if (req.method === 'POST') {
         let userQuery = req.body.userQuery
-        console.log("🚀 ~ file: getAllMoviesIDByQuery.js ~ line 8 ~ userQuery", userQuery)
+        //console.log("🚀 ~ file: getAllMoviesIDByQuery.js ~ line 8 ~ userQuery", userQuery)
 
         var myHeaders = new Headers();
         myHeaders.append("Connection", "keep-alive");
@@ -32,7 +32,7 @@ export default async (req, res) => {
 
         const response = await fetch(`https://v2.sg.media-imdb.com/suggestion/${userQuery.charAt(0).toLowerCase()}/${userQuery}.json`, requestOptions)
         const response_json = await response.json()
-        console.log("🚀 ~ file: getAllMoviesIDByQuery.js ~ line 34 ~ response_json", response_json)
+        //console.log("🚀 ~ file: getAllMoviesIDByQuery.js ~ line 34 ~ response_json", response_json)
         let movieIDs = response_json.d
       
         

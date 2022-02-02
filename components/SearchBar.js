@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { SearchIcon } from '@heroicons/react/outline'
 
 
-export default function SearchBar({query, setQuery, current, setCurrent}) {
-  const [results, setResults] = useState()
+export default function SearchBar({query, setQuery, current, setCurrent, results, setResults}) {
   const [isTypingSearch, setIsTypingSearch] = useState(false)
   
 
@@ -11,12 +10,6 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
     const timeoutId = setTimeout(() =>  getAllMoviesIDByQuery(query), 300);
     return () => clearTimeout(timeoutId);
   }, [query]);
-
-  useEffect(() => {
-    console.log("new results received", results)
-    console.log("new results received", query)
-  }, [results]);
-  
 
 
   async function getAllMoviesIDByQuery(userQuery){

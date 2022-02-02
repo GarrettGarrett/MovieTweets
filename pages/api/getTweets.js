@@ -3,7 +3,7 @@ export default async (req, res) => {
 
     if (req.method === 'POST') {
         let twitterID = req.body.twitterID
-        // console.log("🚀 ~ file: getTweets.js ~ line 6 ~ twitterID", twitterID)
+        // //console.log("🚀 ~ file: getTweets.js ~ line 6 ~ twitterID", twitterID)
 
         var myHeaders = new Headers();
         let BEARER_TOKEN = process.env.BEARER_TOKEN

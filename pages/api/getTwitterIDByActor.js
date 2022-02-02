@@ -7,7 +7,7 @@ export default async (req, res) => {
     const collection = 'actortweets'
     const mongo_response = await db
                     .collection(collection).find({_id: 1}).toArray()
-    console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 25 ~ mongo_response[0].cookie", mongo_response[0].cookie)
+    //console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 25 ~ mongo_response[0].cookie", mongo_response[0].cookie)
 
 
     if (req.method === 'POST') {
@@ -43,7 +43,7 @@ export default async (req, res) => {
         const response = await fetch(`https://twitter.com/i/api/1.1/search/typeahead.json?q=${actor}&src=search_box&result_type=events%2Cusers%2Ctopics`, requestOptions)
         
         const response_json = await response.json()
-        console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 34 ~ response_json", response_json)
+        //console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 34 ~ response_json", response_json)
         
         if (response_json) {
             let mostLikelyID = response_json.users[0].id_str

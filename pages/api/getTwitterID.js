@@ -3,7 +3,7 @@ export default async (req, res) => {
 
     if (req.method === 'POST') {
         let actor = req.body.actor
-        // console.log("🚀 ~ file: getTwitterID.js ~ line 6 ~ twitterLink", actor)
+        // //console.log("🚀 ~ file: getTwitterID.js ~ line 6 ~ twitterLink", actor)
         actor = actor.replaceAll(" ", "")
 
         var myHeaders = new Headers();
@@ -16,7 +16,7 @@ export default async (req, res) => {
         };
 
         const response = await fetch(`https://api.twitter.com/2/users/by/username/${actor}`, requestOptions)
-        // console.log("🚀 ~ file: getTwitterID.js ~ line 18 ~ response", response)
+        // //console.log("🚀 ~ file: getTwitterID.js ~ line 18 ~ response", response)
         
         const response_json = await response.json()
         if (response_json?.data?.id) {

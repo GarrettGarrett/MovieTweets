@@ -5,7 +5,7 @@ export default async (req, res) => {
 
     if (req.method === 'POST') {
         let movieID = req.body.movieID
-        // console.log("🚀 ~ file: getTopCasts.js ~ line 8 ~ movieID", movieID)
+        // //console.log("🚀 ~ file: getTopCasts.js ~ line 8 ~ movieID", movieID)
 
         var myHeaders = new Headers();
         myHeaders.append("authority", "www.omdbapi.com");
@@ -31,7 +31,7 @@ export default async (req, res) => {
 
         const response = await fetch(`https://www.omdbapi.com/?i=${movieID}&apikey=${process.env.OMDB_API_KEY}`, requestOptions)
         const response_json = await response.json()
-        // console.log("🚀 ~ file: getTopCasts.js ~ line 33 ~ response_json", response_json)
+        // //console.log("🚀 ~ file: getTopCasts.js ~ line 33 ~ response_json", response_json)
         if (response_json) {
             let actorsString = response_json.Actors
             let actorsArray = actorsString.split(", ")
