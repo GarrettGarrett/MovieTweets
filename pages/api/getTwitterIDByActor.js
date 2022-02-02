@@ -8,6 +8,7 @@ export default async (req, res) => {
     const collection = 'actortweets'
     const mongo_response = await db
                     .collection(collection).find({_id: 1}).toArray()
+    console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 25 ~ mongo_response[0].cookie", mongo_response[0].cookie)
 
 
     if (req.method === 'POST') {
@@ -32,8 +33,6 @@ export default async (req, res) => {
         myHeaders.append("accept-language", "en-US,en;q=0.9");
        
        
-        
-
         
         var requestOptions = {
           method: 'GET',
