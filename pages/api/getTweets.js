@@ -15,7 +15,7 @@ export default async (req, res) => {
         redirect: 'follow'
         };
 
-        const response = await fetch(`https://api.twitter.com/2/users/${twitterID}/tweets`, requestOptions)
+        const response = await fetch(`https://api.twitter.com/2/users/${twitterID}/tweets?exclude=retweets,replies`, requestOptions)
         const response_json = await response.json()
         if (response_json) {
             let justTweets = response_json.data

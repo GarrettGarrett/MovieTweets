@@ -12,7 +12,7 @@ export default async (req, res) => {
         myHeaders.append("sec-ch-ua-mobile", "?0");
         myHeaders.append("authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA");
         myHeaders.append("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36");
-        myHeaders.append("x-guest-token", "1488412266437365761");
+        myHeaders.append("x-guest-token", "1488679329693196290");
         myHeaders.append("x-twitter-active-user", "yes");
         myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
         myHeaders.append("accept", "*/*");
@@ -33,7 +33,6 @@ export default async (req, res) => {
         };
 
         // new guest token can be found here: https://twitter.com/search?q=daniel%20craig&src=typed_query&f=user
-        
         const response = await fetch(`https://twitter.com/i/api/1.1/search/typeahead.json?q=${actor}&src=search_box&result_type=events%2Cusers%2Ctopics`, requestOptions)
         
         const response_json = await response.json()
