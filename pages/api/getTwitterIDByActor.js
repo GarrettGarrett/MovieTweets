@@ -12,7 +12,7 @@ export default async (req, res) => {
         myHeaders.append("sec-ch-ua-mobile", "?0");
         myHeaders.append("authorization", "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA");
         myHeaders.append("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36");
-        myHeaders.append("x-guest-token", "1488679329693196290");
+        myHeaders.append("x-guest-token", "1488684014323994625");
         myHeaders.append("x-twitter-active-user", "yes");
         myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
         myHeaders.append("accept", "*/*");
