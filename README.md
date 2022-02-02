@@ -32,7 +32,7 @@
 
 
 ## Built With
-![screenshot](public/static/images/techused.png)
+![screenshot](public/static/images/tech_used.png)
 
 * JavaScript
 * Next.js
