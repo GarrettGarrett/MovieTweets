@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">A Web Application to Discover the Twitter Activity for the Casts of your Favorite Movies & TV Shoes.</h4>
+<h4 align="center">A Web Application to Discover the Twitter Activity for the Casts of your Favorite Movies & TV Shows.</h4>
 
 
 
