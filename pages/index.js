@@ -121,7 +121,7 @@ export default function Home() {
     })
     return twitter
   }
-  
+  // 
   async function getSocials(userID){
     const socialsArray = await fetch ("/api/getSocials", {
       method: 'POST',
