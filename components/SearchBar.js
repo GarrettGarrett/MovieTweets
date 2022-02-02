@@ -8,7 +8,7 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
   
 
   useEffect(() => { //Search once user stops typing for 1000 ms
-    const timeoutId = setTimeout(() =>  getAllMoviesIDByQuery(query), 1000);
+    const timeoutId = setTimeout(() =>  getAllMoviesIDByQuery(query), 300);
     if (query?.length > 2){
       setOpen(true)
     }
