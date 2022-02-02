@@ -4,16 +4,12 @@ import { SearchIcon } from '@heroicons/react/outline'
 
 export default function SearchBar({query, setQuery, current, setCurrent}) {
   const [results, setResults] = useState()
-  const [open, setOpen] = useState(false)
+  const [isTypingSearch, setIsTypingSearch] = useState(false)
   
 
   useEffect(() => { //Search once user stops typing for 1000 ms
     const timeoutId = setTimeout(() =>  getAllMoviesIDByQuery(query), 300);
-    if (query?.length > 2){
-      setOpen(true)
-    }
     return () => clearTimeout(timeoutId);
-
   }, [query]);
 
   useEffect(() => {
@@ -47,18 +43,21 @@ export default function SearchBar({query, setQuery, current, setCurrent}) {
             className="relative pl-10 bg-black text-gray-400 block w-full text-md  rounded-md"
             placeholder="Search Any Movie or TV Show..."
             value={query}
-            onChange={(e) => setQuery(e.target.value.toLowerCase())}
+            onChange={(e) => {
+              setIsTypingSearch(true)
+              setQuery(e.target.value.toLowerCase())}
+            }
           />
         </div>
 
 
         {
-          results?.length > 0 ? 
+          results?.length > 0  && isTypingSearch == true ? 
           results?.map(result => {
             return (
               <div 
               onClick={() => {
-                // setOpen(false)
+                setIsTypingSearch(false)
                 setResults('')
                 setCurrent(result.id)
                 setQuery(result.l.toLowerCase())
