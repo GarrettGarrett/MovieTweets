@@ -40,23 +40,34 @@ export default function Home() {
       asyncForEach(topCastsArray, async (actor) => { 
           let twitterID = await getTwitterIDByActor(actor)
           
-          let tweetsArray = await getTweets(twitterID)
-          console.log("🚀 ~ file: index.js ~ line 29 ~ everything ~ tweetsArray", tweetsArray)
-          setStatus(`Fetching Tweets for ${actor}...`)
-
-          asyncForEach(tweetsArray, async (tweet) => { //embed tweets for given array of tweets
-            setStatus(`Embedding Tweets for ${actor}...`)
-            let twitterEmbed = await getTweetEmbed(tweet, actor)
-            setEmbedArray((oldArray) => [...oldArray, twitterEmbed])
-            setStatus(`na`), () => setTimeout(() => {  setStatus('na') }, 2000)  
-          })
-        
+          let followersCount = await getFollowerCount(twitterID)
+          console.log("🚀 ~ file: index.js ~ line 44 ~ asyncForEach ~ followersCount", followersCount)
+          if (followersCount > 5000) {
+            let tweetsArray = await getTweets(twitterID)
+            console.log("🚀 ~ file: index.js ~ line 29 ~ everything ~ tweetsArray", tweetsArray)
+            setStatus(`Fetching Tweets for ${actor}...`)
+  
+            asyncForEach(tweetsArray, async (tweet) => { //embed tweets for given array of tweets
+              setStatus(`Embedding Tweets for ${actor}...`)
+              let twitterEmbed = await getTweetEmbed(tweet, actor)
+              setEmbedArray((oldArray) => [...oldArray, twitterEmbed])
+              setStatus(`na`), () => setTimeout(() => {  setStatus('na') }, 2000)  
+            })
+          }
       })
-      
     }
-    
   }
-// 
+
+async function getFollowerCount(twitterID){
+  const followerCount = await fetch ("/api/getFollowerCount", {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({twitterID: twitterID}) 
+  })
+  let follower_count_json = await followerCount.json()
+  return follower_count_json.followers_count
+}
+
   async function asyncForEach(array, callback) {
     for (let index = 0; index < array?.length; index++) {
       await callback(array[index], index, array);
