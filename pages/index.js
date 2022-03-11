@@ -39,12 +39,16 @@ export default function Home() {
       const topCastsArray = await getTopCast(movieID)
       //console.log("🚀 ~ file: index.js ~ line 17 ~ everything ~ topCastsArray", topCastsArray)
       setStatus("Fetching Top Actors...")
-      
+
+    
       asyncForEach(topCastsArray, async (actor) => { 
           let twitterID = await getTwitterIDByActor(actor)
+          // console.log("🚀 ~ file: index.js ~ line 45 ~ asyncForEach ~ twitterID", twitterID)
+          let screen_name = await getTwitterHandleByActor(actor)
+          // console.log("🚀 ~ file: index.js ~ line 47 ~ asyncForEach ~ screen_name", screen_name)
           
-          let followersCount = await getFollowerCount(twitterID)
-          //console.log("🚀 ~ file: index.js ~ line 44 ~ asyncForEach ~ followersCount", followersCount)
+          let followersCount = await getFollowerCount(screen_name)
+          // console.log("🚀 ~ file: index.js ~ line 48 ~ asyncForEach ~ followersCount", followersCount)
           if (followersCount > 5000) {
             let tweetsArray = await getTweets(twitterID)
             //console.log("🚀 ~ file: index.js ~ line 29 ~ everything ~ tweetsArray", tweetsArray)
@@ -61,11 +65,11 @@ export default function Home() {
     }
   }
 
-async function getFollowerCount(twitterID){
+async function getFollowerCount(actor){
   const followerCount = await fetch ("/api/getFollowerCount", {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({twitterID: twitterID}) 
+    body: JSON.stringify({actor: actor}) 
   })
   let follower_count_json = await followerCount.json()
   return follower_count_json.followers_count
@@ -119,8 +123,17 @@ async function getFollowerCount(twitterID){
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({actor: actor}) 
     })
-    let twitterID_json = await twitterID.json()
-    return twitterID_json.mostLikelyID
+    let twitterID_response = await twitterID.json()
+    return twitterID_response.twitterID
+  }
+  async function getTwitterHandleByActor(actor){
+    const twitterID = await fetch ("/api/getTwitterHandleByActor", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({actor: actor}) 
+    })
+    let screen_name = await twitterID.json()
+    return screen_name.screen_name
   }
 
 

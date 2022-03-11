@@ -43,12 +43,12 @@ export default async (req, res) => {
         const response = await fetch(`https://twitter.com/i/api/1.1/search/typeahead.json?q=${actor}&src=search_box&result_type=events%2Cusers%2Ctopics`, requestOptions)
         
         const response_json = await response.json()
-        // console.log("🚀 ~ file: getTwitterIDByActor.js ~ line 34 ~ response_json", response_json.users[0])
         
         if (response_json) {
-            
-            let twitterID = response_json.users[0].id_str
-            return res.status(200).json({twitterID} )
+
+            // let twitterID = response_json.users[0].id_str
+            let screen_name = response_json.users[0].screen_name
+            return res.status(200).json({screen_name} )
         } 
         
     }

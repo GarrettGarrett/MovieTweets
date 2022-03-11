@@ -26,9 +26,7 @@ export default async (req, res) => {
           headers: myHeaders,
           redirect: 'follow'
         };
-        
-      
-        
+
 
         const response = await fetch(`https://v2.sg.media-imdb.com/suggestion/${userQuery.charAt(0).toLowerCase()}/${userQuery}.json`, requestOptions)
         const response_json = await response.json()

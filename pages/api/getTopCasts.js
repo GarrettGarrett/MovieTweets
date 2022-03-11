@@ -1,4 +1,3 @@
-import * as cheerio from 'cheerio';
 
 
 export default async (req, res) => {
